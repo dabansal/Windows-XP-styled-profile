@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AppId } from '../types';
 import { User, Briefcase, Globe, Mail, Play, Settings, LogOut, Terminal } from 'lucide-react';
 
@@ -11,6 +11,8 @@ interface StartMenuProps {
 }
 
 const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onAppClick, onClose, userName, userImage }) => {
+  const [imgError, setImgError] = useState(false);
+
   if (!isOpen) return null;
 
   const handleClick = (id: AppId) => {
@@ -23,8 +25,13 @@ const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onAppClick, onClose, user
       {/* Header */}
       <div className="h-14 bg-gradient-to-b from-[#1571E3] to-[#2E87E8] flex items-center px-4 gap-3 shadow-md border-b-2 border-[#E57E31]">
         <div className="w-10 h-10 rounded border-2 border-white bg-[#D7E4F2] overflow-hidden flex items-center justify-center relative shadow-sm">
-             {userImage ? (
-               <img src={userImage} alt={userName} className="w-full h-full object-cover" />
+             {userImage && !imgError ? (
+               <img 
+                  src={userImage} 
+                  alt={userName} 
+                  className="w-full h-full object-cover" 
+                  onError={() => setImgError(true)}
+               />
              ) : (
                <User className="text-gray-400 w-8 h-8" />
              )}

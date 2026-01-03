@@ -2,9 +2,8 @@ import { Experience, Skill } from './types';
 
 export const PROFILE = {
   name: "Dheeraj Bansal",
-  // Placeholder image used to ensure it loads.
-  // To use your local file, upload 'profile.png' to the public folder and change this back to "/profile.png"
-  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000", 
+  // Points to local file. Ensure 'profile.png' is in the public directory.
+  image: "/profile.png", 
   headline: "Director of Engineering at athenahealth | Technology Leader",
   location: "Bengaluru, Karnataka, India",
   phone: "9916280651",
